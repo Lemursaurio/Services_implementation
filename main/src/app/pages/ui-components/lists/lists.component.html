@@ -1,0 +1,27 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Películas</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+    <p class="f-w-500 text-muted" style="text-align: center">
+      ¡Prueba el servicio de búsqueda de películas!
+    </p>
+    <form style="text-align: center" (ngSubmit)="onSubmit()">
+      <label class="f-w-500 text-muted" for="title">Título:</label>
+      <input style="margin: 5px 10px" type="text" id="title" [(ngModel)]="title" name="title" placeholder="Ingrese título a buscar" required>
+      <button style="weight: 50%; margin: 5px auto 18px auto" type="submit">Buscar película</button>
+    </form>
+
+    <div *ngIf="movie$ | async as movie; else loading">
+      <h2 style="text-align: center">Resultado Película</h2>
+        <p style="text-align: center">Título: {{ movie.titulo }}</p>
+        <p style="text-align: center">Fecha de Lanzamiento: {{ movie.fecha_lanzamiento }}</p>
+        <p style="text-align: center">Géneros: {{ movie.genero }}</p>
+        <p style="text-align: center">Director: {{ movie.director }}</p>
+        <p style="text-align: center">Actores: {{ movie.actores }}</p>
+    </div>
+    <ng-template #loading></ng-template>
+
+  </mat-card-content>
+</mat-card>

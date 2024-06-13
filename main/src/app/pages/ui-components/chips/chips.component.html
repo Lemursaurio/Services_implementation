@@ -1,0 +1,25 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Buscador de Códigos ZIP de Norteamérica</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+    <p class="f-w-500 text-muted" style="text-align: center">
+      ¡Prueba el servicio de búsqueda de ZIPs de Norteamérica!
+    </p>
+    <form style="text-align: center" (ngSubmit)="onSubmit()">
+      <label class="f-w-500 text-muted" for="zip">Ubicación:</label>
+      <input style="margin: 5px 10px" type="text" id="zip" [(ngModel)]="zip" name="zip" placeholder="Ingrese ZIP a buscar" required>
+      <button style="weight: 50%; margin: 5px auto 18px auto" type="submit">Buscar ZIP</button>
+    </form>
+
+    <div *ngIf="zip$ | async as zip; else loading">
+      <h2 style="text-align: center">Resultado ZIP</h2>
+      <p style="text-align: center">Código ZIP: {{ zip.codigo_zip }}</p>
+      <p style="text-align: center">Condado: {{ zip.condado }}</p>
+      <p style="text-align: center">Población: {{ zip.poblacion }}</p>
+    </div>
+    <ng-template #loading></ng-template>
+ 
+  </mat-card-content>
+</mat-card>

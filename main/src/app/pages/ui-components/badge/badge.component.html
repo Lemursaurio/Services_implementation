@@ -1,0 +1,22 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Servicio del clima</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+    <p class="f-w-500 text-muted" style="text-align: center">
+      ¡Prueba el servicio de clima!
+    </p>
+    <button (click)="fetchClima()" style="display: block; margin: auto">Obtener Clima</button>
+
+    <div style="padding-top: 18px" *ngIf="clima$ | async as clima; else loading">
+      <h2 style="text-align: center">Clima Actual</h2>
+      <p style="text-align: center">Temperatura: {{ clima.temperatura }} °C</p>
+      <p style="text-align: center">Tipo de Clima: {{ clima.tipo_clima }}</p>
+      <p style="text-align: center">Hora: {{ clima.hora }}</p>
+    </div>
+    <ng-template #loading></ng-template> 
+ 
+  </mat-card-content>
+</mat-card>
+

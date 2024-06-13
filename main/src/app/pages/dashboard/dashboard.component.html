@@ -1,0 +1,59 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Base de Datos de Empleados</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+  
+        <p class="f-w-500 text-muted" style="text-align: center">
+            Servicio de guardado y recuperación de datos de Empleados
+        </p>
+        <form style="text-align: center" (ngSubmit)="onSubmit()">
+        <div>
+            <label class="f-w-500 text-muted" for="nombre">Nombre:</label>
+            <input style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px" type="text" id="nombre" [(ngModel)]="empleado.nombre" name="nombre" required>               
+        </div>
+        <div>
+            <label class="f-w-500 text-muted" for="apellido">Apellido:</label>
+            <input style="margin-top: 10px; margin-bottom: 10px; margin-left: 9px" type="text" id="apellido" [(ngModel)]="empleado.apellido" name="apellido" required>
+        </div>
+        <div>
+            <label class="f-w-500 text-muted" for="edad">Edad:</label>
+            <input style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px" type="text" id="edad" [(ngModel)]="empleado.edad" name="edad" required>
+        </div>
+        <div>
+            <label class="f-w-500 text-muted" for="departamento">Depart.:</label>
+            <input style="margin-top: 10px; margin-bottom: 10px; margin-left: 13px" type="text" id="departamento" [(ngModel)]="empleado.departamento" name="departamento" required>
+        </div> 
+        <div>
+            <label class="f-w-500 text-muted" for="correo">Correo:</label>
+            <input style="margin-top: 10px; margin-bottom: 10px; margin-left: 17px" type="text" id="correo" [(ngModel)]="empleado.correo" name="correo" required>
+        </div>            
+        <button style="weight: 50%; margin: 5px auto 18px auto" type="submit">Guardar empleado</button>
+        </form>
+    
+        <div style="padding-top: 10px" class="table-responsive">
+        <table style="margin: auto" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Departamento</th>
+                <th>Correo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empleado of empleado$ | async">
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellido }}</td>
+                <td>{{ empleado.edad }}</td>
+                <td>{{ empleado.departamento }}</td>
+                <td>{{ empleado.correo }}</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+    </mat-card-content>
+  </mat-card>
+  
